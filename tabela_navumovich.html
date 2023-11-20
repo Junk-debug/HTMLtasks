@@ -2,10 +2,210 @@
 <html lang="pl-PL">
 	<head>
 		<meta charset="utf-8">
-		<title>tabela</title>
+		<title>Tabela HTML wykonanie Navumovich 2Kg2</title>
+		<style>
+			/* zmienne kolorów */
+			:root {
+				--main-red: #e06666;
+				--yellow-1:#fff3cc;
+				--yellow-2:#ffe598;
+				--yellow-3:#ffd966;
+				--yellow-4:#f1c231;
+				--blue-1:#20487c;
+				--blue-2:#6d9eeb;
+				--blue-3:#c9dbf8;
+			}
+			/* ścionka i granicy tabeli */
+			.table {
+				table-layout: fixed;
+				width: 1000px;
+				text-align: center;
+				border-collapse: collapse;
+				font-family: 'Times New Roman', Times, serif;
+				border: 6pt solid var(--blue-2);
+				border-top: none;
+			}
+			/* tytuł tabeli */
+			.table caption{
+				background-color: var(--main-red);
+				color: white;
+				font-weight: bold;
+				font-size: 24pt;
+				border: 6pt solid var(--blue-2);
+				border-bottom: none;
+			}
+			/* styl nagłówków */
+			.table thead {
+				background-color: var(--blue-3);
+				color: var(--blue-1);
+				font-size: 14pt;
+			}
+			/* styl ciała tabeli */
+			.table tbody {
+				font-size: 11pt;
+				font-family: 'Courier New', Courier, monospace;
+			}
+			/* granicy wewnątrz tabeli */
+			.table td, .table th {
+				border: 1.5pt solid white;
+			}
+			/* colorowanie wierszy */
+			.table tbody tr:nth-child(1) {
+				background-color: var(--yellow-1);
+			}
+			.table tbody tr:nth-child(2) {
+				background-color: var(--yellow-2);
+			}
+			.table tbody tr:nth-child(3) {
+				background-color: var(--yellow-2);
+			}
+			.table tbody tr:nth-child(4) {
+				background-color: var(--yellow-3);
+			}
+			.table tbody tr:nth-child(5) {
+				background-color: var(--yellow-3);
+			}
+			.table tbody tr:nth-child(6) {
+				background-color: var(--yellow-4);
+			}
+			/* ostatni wiersz tabeli */
+			.table tr:last-child td {
+				font-size: 18pt;
+				font-weight: bold;
+				font-family: 'Times New Roman', Times, serif;
+				color: var(--main-red);
+			}
+			/* 1 kolumna MODEL */
+			.table tbody tr:nth-child(1) td:nth-child(1), 
+			.table tbody tr:nth-child(2) td:nth-child(1), 
+			.table tbody tr:nth-child(3) td:nth-child(1), 
+			.table tbody tr:nth-child(4) td:nth-child(1), 
+			.table tbody tr:nth-child(5) td:nth-child(1), 
+			.table tbody tr:nth-child(6) td:nth-child(1) {
+				font-family: 'Times New Roman', Times, serif;
+				font-weight: bold;
+			}
+			/* 2 kolumna MODEL */
+			.table tbody tr:nth-child(1) td:nth-child(2), 
+			.table tbody tr:nth-child(2) td:nth-child(2), 
+			.table tbody tr:nth-child(3) td:nth-child(2), 
+			.table tbody tr:nth-child(4) td:nth-child(2), 
+			.table tbody tr:nth-child(5) td:nth-child(2) {
+				font-weight: bold;
+				color: var(--blue-1);
+			}
+			/* 4 kolumna CORES */
+			.table tbody tr:nth-child(1) td:nth-child(4), 
+			.table tbody tr:nth-child(2) td:nth-child(4), 
+			.table tbody tr:nth-child(3) td:nth-child(4), 
+			.table tbody tr:nth-child(4) td:nth-child(4), 
+			.table tbody tr:nth-child(5) td:nth-child(4),
+			.table tbody tr:nth-child(6) td:nth-child(3) {
+				text-align: left;
+			}
+			/* 5 kolumna CACHE */
+			.table tbody tr:nth-child(1) td:nth-child(5), 
+			.table tbody tr:nth-child(2) td:nth-child(5), 
+			.table tbody tr:nth-child(3) td:nth-child(5), 
+			.table tbody tr:nth-child(4) td:nth-child(5), 
+			.table tbody tr:nth-child(5) td:nth-child(5), 
+			.table tbody tr:nth-child(6) td:nth-child(4) {
+				font-weight: bold;
+				color: var(--blue-2);
+			}
+			/* 6 kolumna TDP */
+			.table tbody tr:nth-child(1) td:nth-child(6), 
+			.table tbody tr:nth-child(2) td:nth-child(6), 
+			.table tbody tr:nth-child(3) td:nth-child(6), 
+			.table tbody tr:nth-child(4) td:nth-child(6), 
+			.table tbody tr:nth-child(5) td:nth-child(6), 
+			.table tbody tr:nth-child(6) td:nth-child(5) {
+				font-weight: bold;
+				text-align: right;
+				color: var(--main-red);
+			}
+		</style>
 	</head>
 	<body>
 		<a href="index.html">index.html</a>
 		<h1>tutaj będzie tabela</h1>
+		<table class="table">
+			<caption>Dane komputerowe - Maksim Navumovich 2Kg2</caption>
+			<thead>
+				<tr>
+					<th>MODEL</th>
+					<th>CODENAME</th>
+					<th>PROCESS</th>
+					<th>CORES</th>
+					<th>CACHE</th>
+					<th>TDP<br>(Watts)</th>
+					<th>BASE CLOCK<br>(MHz)</th>
+					<th>GRAPHICS CLOCK<br>(MHz)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Core i7-1065G7</td>
+					<td>Ice Lake</td>
+					<td>10nm</td>
+					<td>4/8</td>
+					<td>8MB</td>
+					<td>15W</td>
+					<td>1,100</td>
+					<td>1,300</td>
+				</tr>
+				<tr>
+					<td>Core i5-1035G4</td>
+					<td>Ice Lake</td>
+					<td>10nm</td>
+					<td>2/4</td>
+					<td>6MB</td>
+					<td>25W</td>
+					<td colspan="2">1,100</td>
+				</tr>
+				<tr>
+					<td>Core i3-1005G1</td>
+					<td>Ice Lake</td>
+					<td>10nm</td>
+					<td>6/12</td>
+					<td>4MB</td>
+					<td>9W</td>
+					<td>900</td>
+					<td>1,200</td>
+				</tr>
+				<tr>
+					<td>Core i5-1030G4</td>
+					<td>Ice Lake</td>
+					<td>14nm</td>
+					<td>4/8</td>
+					<td>6MB</td>
+					<td>12W</td>
+					<td>700</td>
+					<td>1,050</td>
+				</tr>
+				<tr>
+					<td>Core i7-10710U</td>
+					<td rowspan="2">Comet Lake</td>
+					<td>14nm</td>
+					<td>4/8</td>
+					<td>12MB</td>
+					<td>25W</td>
+					<td>1,100</td>
+					<td>1,800</td>
+				</tr>
+				<tr>
+					<td>Core i7-10510U</td>
+					<td>8nm</td>
+					<td>2/4</td>
+					<td>8MB</td>
+					<td>11W</td>
+					<td>1,150</td>
+					<td>1,800</td>
+				</tr>
+				<tr>
+					<td colspan="8">Charakterystyka procesorów Intel</td>
+				</tr>
+			</tbody>
+		   </table>
 	</body>
 </html>

@@ -3,12 +3,699 @@
 	<head>
 		<meta charset="utf-8">
 		<title>formularz</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<style>
-		
+			:root {
+				--bg-color: #3E4652;
+				--header-bg-color: #464E5B;
+				--card-color: #505967;
+				--input-color: #667285;
+				--placeholder-color: #B1B1B1;
+				--accent-color: #499FFF;
+				--text-color: #fff;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+			}
+			html {
+				font-family: 'Inter', sans-serif;
+				color: var(--text-color);
+				font-size: 18px;
+				font-weight: 300;
+				background-color: var(--bg-color);
+			}
+			body {
+				padding-top: 80px;
+				min-height: 1400px;
+			}
+			p {
+				font-weight: 600;
+			}
+			a {
+				text-decoration: none;
+				color: var(--text-color)
+			}
+			input[type=text], input[type=password], input[type=tel], textarea, select {
+				background-color: var(--input-color);
+				height: 30px;
+				border-radius: 7px;
+				border: none;
+				color: var(--text-color);
+				padding-left: 12px;
+				font-family: 'Inter', sans-serif;
+				font-size: 18px;
+				font-weight: 300;
+			}
+			.header {
+				font-size: 64px;
+				font-weight: 700;
+				text-align: center;
+				margin-bottom: 80px;
+			}
+			button {
+				background-color: var(--card-color);
+				color: var(--text-color);
+				width: 190px;
+				height: 40px;
+				font-size: 18px;
+				border: none;
+				border-radius: 20px;
+			}
+			input[type=reset], input[type=submit] {
+				width: 190px;
+				height: 50px;
+				background-color: var(--card-color);
+				color: var(--text-color);
+				font-size: 18px;
+				border: none;
+				border-radius: 20px;
+			}
+			input[type=reset]:hover, input[type=submit]:hover {
+				border: 2px solid var(--accent-color);
+			}
+			button:hover {
+				border: 2px solid var(--accent-color);
+			}
+			.odrabiamy-button {
+				background-color: var(--accent-color);
+				height: 75px;
+				font-size: 24px;
+				transition: all 0.5s cubic-bezier(0.72, 0.23, 0.01, 1.24);
+			}
+			.odrabiamy-button:hover {
+				color: var(--accent-color);
+				background-color: var(--text-color);
+				font-weight: 600;
+			}
+			.back-to-index {
+				width: 190px;
+				height: 190px;
+				font-size: 24px;
+				position: relative;
+			}
+			.back-to-index span {
+				position: relative;
+				color: var(--card-color);
+				font-weight: 600;
+				transition: all 0.5s cubic-bezier(0.72, 0.23, 0.01, 1.24);
+			}
+			.back-to-index:hover span {
+				opacity: 0;
+			}
+			.back-to-index::before {
+				content: "";
+				position: absolute;
+				top: 0; left: 0;
+				width: 100%; height: 100%;
+				border-radius: 18px;
+				background-image: url('img/back-to-index.png');
+				background-size: contain;
+				filter: blur(2.5px);
+				transition: all 0.5s cubic-bezier(0.72, 0.23, 0.01, 1.24);
+			}
+			.back-to-index:hover::before {
+				filter: none;
+			}
+			.container {
+				position: relative;
+				max-width: 1230px;
+				margin: 0 auto;
+			}
+			form {
+				display: flex;
+				flex-direction: row;
+				column-gap: 20px;
+				row-gap: 40px;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			.card {
+				width: 480px;
+			}
+			.card__header {
+				background-color: var(--header-bg-color);
+				height: 37px;
+				color: var(--accent-color);
+				border-radius: 30px 30px 0px 0px;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-content: center;
+				font-size: 16px;
+				font-weight: 700;
+			}
+			.card__body {
+				background-color: var(--card-color);
+				color: var(--text-color);
+				border-radius: 0px 0px 30px 30px;
+				padding: 24px 30px 0 30px;
+			}
+			.left-part {
+				max-width: 480px;
+				display: flex;
+				flex-flow: row wrap;
+				gap: 20px;
+			}
+			.right-part {
+				max-width: 730px;
+				display: flex;
+				flex-flow: row wrap;
+				gap: 20px;
+			}
+			.info__body {
+				height: 268px;
+			}
+			.info__inside {
+				display: flex;
+				justify-content: space-between;
+			}
+			.info__labels {
+				display: flex;
+				flex-direction: column;
+				padding-top: 4px;
+				gap: 35px;
+			}
+			.info__inputs {
+				display: flex;
+				flex-direction: column;
+			}
+			#name, #word, #tel, #cvv {
+				width: 200px;
+			}
+			#name, #word {
+				margin-bottom: 25px;
+			}
+			#tel {
+				margin-bottom: 38px;
+			}
+			#cvv {
+				width: 56px;
+				font-size: 22px;
+				font-weight: 600;
+			}
+			.lang {
+				width: 270px;
+			}
+			.lang__header {
+				height: 75px;
+			}
+			.lang__body {
+				height: 277px;
+			}
+			.lang__inside {
+				display: flex;
+				flex-direction: column;
+				gap: 30px;
+			}
+			.lang__other input[type=text]::placeholder {
+				color: var(--placeholder-color);
+			}
+			.lang__other div {
+				margin-bottom: 6px;
+			}
+			.buttons {
+				width: 190px;
+				height: 352px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.questions__body {
+				height: 260px;
+			}
+			.questions__first, .questions__second {
+				margin-bottom: 40px;
+			}
+			.questions p {
+				margin-bottom: 24px;
+			}
+			.questions select {
+				width: 100%;
+			}
+			.hobbies {
+				width: 730px;
+			}
+			.hobbies__body {
+				height: 85px;
+			}
+			.hobbies__inside {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between
+			}
+			.relations {
+				width: 330px;
+			}
+			.relations__header {
+				height: 75px;
+			}
+			.relations__body {
+				height: 190px;
+			}
+			.relations__inside {
+				height: 126px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.focus {
+				width: 380px;
+			}
+			.focus__body {
+				height: 227px;
+			}
+			.focus__body textarea {
+				width: 320px;
+				height: 163px;
+			}
+			.school {
+				width: 730px;
+			}
+			.school__body {
+				height: 298px
+			}
+			.school p {
+				margin-bottom: 24px;
+			}
+			.school__radios {
+				height: 68px;
+				display: flex;
+				flex-flow: row wrap;
+				justify-content: space-between;
+				align-content: space-between;
+				margin-bottom: 40px;
+			}
+			.school select {
+				width: 420px;
+			}
+			.devices {
+				width: 230px;
+			}
+			.devices__header {
+				height: 75px;
+			}
+			.devices__body {
+				height: 137px;
+			}
+			.devices__inside {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+			.screen__header {
+				height: 75px;
+			}
+			.screen__header h2 {
+				text-align: center;
+			}
+			.screen__inside {
+				display: flex;
+				justify-content: space-between;
+			}
+			.screen__body {
+				height: 137px;
+			}
+			.action-buttons {
+				display: flex;
+				column-gap: 74px;
+			}
+			
+			.popup {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.8);
+				top: 0;
+				left: 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.8s ease 0s;
+			}
+			.popup.open {
+				opacity: 1;
+				visibility: visible;
+			}
+			.popup__area {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+			.popup__body {
+				min-height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 30px 10px;
+			}
+			.popup__content {
+				max-width: 800px;
+				position: relative;
+			}
+			.popup__close {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				font-size: 20px;
+				font-weight: 900;
+				color: #000;
+				text-decoration: none;
+			}
 		</style>
 	</head>
 	<body>
-		<a href="index.html">index.html</a>
-		<h1>tutaj będzie formularz</h1>
+		<h1 class="header">Formularz Społeczny</h1>
+		<div class="container">
+			<form enctype="text/plain" action="mailto:mkryniew@ids.gda.pl" subject="formularz_dane" method="Post">
+				<div class="left-part">
+					<div class="card info">
+						<div class="card__header info__header">
+							<h2>Dane podstawowe</h2>
+						</div>
+						<div class="card__body info__body">
+							<div class="info__inside">
+								<div class="info__labels">
+									<label for="name">Imię</label>
+									<label for="word">Ulubione słowo</label>
+									<label for="tel">Numer telefonu</label>
+									<label for="cvv">
+										Kod bezpieczeństwa<br> 
+										karty kredytowej
+									</label>
+								</div>
+								<div class="info__inputs">
+									<input name="name" id="name" type="text" value="Rick">
+									<input name="favouriteWord" id="word" type="text" value="">
+									<input name="telNumber" id="tel" type="tel" maxlength="12" value="+48 512 233 855">
+									<input name="cvv" id="cvv" type="password"  maxlength="3" value="">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card lang">
+						<div class="card__header lang__header">
+							<h2>
+								Jakie znasz języki <br>
+								programowania?
+							</h2>
+						</div>
+						<div class="card__body lang__body">
+							<div class="lang__inside">
+								<div class="lang__python">
+									<input name="python" type="checkbox" id="python" value="yes">
+									<label for="python">Python</label>
+								</div>
+								<div class="lang__cpp">
+									<input name="cpp" type="checkbox" id="cpp" value="yes">
+									<label for="cpp">C++</label>
+								</div>
+								<div class="lang__js">
+									<input name="js"  type="checkbox" id="js" value="yes">
+									<label for="js">JavaScript</label>
+								</div>
+								<div class="lang__other">
+									<div>
+										<input name="other" type="checkbox" id="other" value="yes">
+										<label for="other">Inne</label>
+									</div>
+									<input name="other" placeholder="Wpisz swoje" type="text">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buttons">
+						<button type="button" class="show-pussy">
+							Pokaż kotka
+						</button>
+						<button type="button" class="odrabiamy-button" onclick="document.location='https://www.youtube.com/watch?v=dQw4w9WgXcQ'">
+								Free<br>
+								odrabiamy
+						</button>
+						<button type="button" class="back-to-index" onclick="document.location='index.html'">
+							<span>
+								Wróć do<br>
+								index.html
+							</span>
+						</button>
+					</div>
+					<div class="card questions">
+						<div class="card__header">
+							<h2>Pytania</h2>
+						</div>
+						<div class="card__body questions__body">
+							<div class="questions__inside">
+								<div class="questions__first">
+									<p>Słuchasz muzyki czy ją odtwarzasz?</p>
+									<select name="music">
+										<option disabled>Wybierz odpowiedź</option>
+										<option value="listen">Słucham</option>
+										<option value="make">Odtwarzam</option>
+										<option selected value="listenAndMake">Słucham i odtwarzam</option>
+									</select>
+								</div>
+								<div class="questions__second">
+									<p>Czy jesteś zadowolony ze swojego życia?</p>
+									<select name="enjoyLife">
+										<option disabled selected>Wybierz odpowiedź</option>
+										<option value="yes">Tak</option>
+										<option value="no">Nie</option>
+										<option value="50/50">50/50</option>
+										<option value="unknown">Nie wiem</option>
+									</select>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="right-part">
+					<div class="card hobbies">
+						<div class="card__header hobbies__header">
+							<h2>Czy masz jakieś zainteresowania/hobby?</h2>
+						</div>
+						<div class="card__body hobbies__body">
+							<div class="hobbies__inside">
+								<div>
+									<input name="guitar" checked type="checkbox" id="guitar" value="yes">
+									<label for="guitar">Gra na gitarze</label>
+								</div>
+								<div>
+									<input name="singing" type="checkbox" id="singing" value="yes">
+									<label for="singing">Śpiewanie</label>
+								</div>
+								<div>
+									<input name="dancing" type="checkbox" id="dancing" value="yes">
+									<label for="dancing">Taniec</label>
+								</div>
+								<div>
+									<input name="sport" type="checkbox" id="sport" value="yes">
+									<label for="sport">Sport</label>
+								</div>
+								<div>
+									<input name="drawing" type="checkbox" id="drawing" value="yes">
+									<label for="drawing">Malowanie</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card relations">
+						<div class="card__header relations__header">
+							<h2>Jakie są twoje relacje <br>
+								z rodzicami?</h2>
+						</div>
+						<div class="card__body relations__body">
+							<div class="relations__inside">
+								<div>
+									<input name="relations" type="radio" id="good" value="good">
+									<label for="good">Dobre</label>
+								</div>
+								<div>
+									<input name="relations" type="radio" id="bad" value="bad">
+									<label for="bad">Złe</label>
+								</div>
+								<div>
+									<input name="relations" type="radio" id="ok" value="ok">
+									<label for="ok">Normalne</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card focus">
+						<div class="card__header">
+							<h2>Co robisz żeby się skupić?</h2>
+						</div>
+						<div class="card__body focus__body">
+							<textarea name="focus" id="focus" cols="30" rows="10"></textarea>
+						</div>
+					</div>
+					<div class="card school">
+						<div class="card__header">
+							<h2>Szkoła</h2>
+						</div>
+						<div class="card__body school__body">
+							<div class="school__inside">
+								<div class="school__grades">
+									<p>Jak dobrze radzisz sobie w skole?</p>
+									<div class="school__radios">
+										<div>
+											<input name="grades" type="radio" id="very-bad" value="good">
+											<label for="very-bad">Bardzo źle (1-2)</label>
+										</div>
+										<div>
+											<input name="grades" type="radio" id="badly" value="bad">
+											<label for="badly">Źle (2-3)</label>
+										</div>
+										<div>
+											<input name="grades" type="radio" id="normal" value="ok">
+											<label for="normal">Dobrze (3-4)</label>
+										</div>
+										<div>
+											<input name="grades" type="radio" id="goodly" value="good">
+											<label for="goodly">Bardzo dobrze (4-5)</label>
+										</div>
+										<div>
+											<input name="grades" type="radio" id="very-good" value="very-good">
+											<label for="very-good">Doskonale (5-6)</label>
+										</div>
+									</div>
+								</div>
+								<div class="school__subject">
+									<p>Jaki jest twoj ulubiony przedmiot w szkole?</p>
+									<select name="favouriteSubject">
+										<option disabled>Wybierz odpowiedź</option>
+										<option value="chemistry">Chemia</option>
+										<option value="pe">WF</option>
+										<option selected value="math">Matematyka</option>
+										<option value="english">Język angielski</option>
+										<option value="history">Historia</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card devices">
+						<div class="card__header devices__header">
+							<h2>Jakie posiadasz<br>
+								gadżety?</h2>
+						</div>
+						<div class="card__body devices__body">
+							<div class="devices__inside">
+								<div>
+									<input name="desktop" type="checkbox" id="desktop" value="yes">
+									<label for="desktop">Komputer</label>
+								</div>
+								<div>
+									<input name="laptop" type="checkbox" id="laptop" value="yes">
+									<label for="laptop">Laptop</label>
+								</div>
+								<div>
+									<input name="tablet" type="checkbox" id="tablet" value="yes">
+									<label for="tablet">Tablet</label>
+								</div>
+									
+							</div>
+						</div>
+					</div>
+					<div class="card screen">
+						<div class="card__header screen__header">
+							<h2>Jak często używasz smartfona?<br>
+								(dziennie)</h2>
+						</div>
+						<div class="card__body screen__body">
+							<div class="screen__inside">
+								<div>
+									<input name="screen" type="radio" id="little" value="little">
+									<label for="little">0,5 - 1 h</label>
+								</div>
+								<div>
+									<input name="screen" checked type="radio" id="medium" value="medium">
+									<label for="medium">1 - 3 h</label>
+								</div>
+								<div>
+									<input name="screen" type="radio" id="many" value="many">
+									<label for="many">3 - 5 h</label>
+								</div>
+								<div>
+									<input name="screen" type="radio" id="too-much" value="too-much">
+									<label for="too-much">&gt;5 h</label>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="action-buttons">
+					<input type="submit" value="Wyślij">
+					<input type="reset" value="Czyść">
+				</div>
+			</form>
+		</div>
+		<div id="pussy" class="popup">
+			<a href="#" class="popup__area"></a>
+			<div class="popup__body">
+				<div class="popup__content">
+					<a href="#" class="popup__close close-popup">X</a>
+					<img src="img/shower-cat.gif" alt="pussy">
+				</div>
+			</div>
+		</div>
+		<script>
+			const button = document.querySelector('.show-pussy');
+			const body = document.querySelector('body');
+			const lockPadding = document.querySelectorAll('.lock-padding');
+			const popup = document.getElementById('pussy');
+
+			let unlock = true;
+
+			const timeout = 800;
+
+			button.addEventListener('click', function(e) {
+				popupOpen(popup);
+				e.preventDefault();
+			});
+
+			const popupCloseIcon = document.querySelectorAll('.close-popup');
+			if (popupCloseIcon.length > 0) {
+				for (let i = 0; i < popupCloseIcon.length; i++) {
+					const el = popupCloseIcon[i];
+					el.addEventListener('click', function(e) {
+						popupClose(el.closest('.popup'));
+						e.preventDefault();
+					});
+				}
+			}
+
+			function popupOpen(popup) {
+				if (popup && unlock) {
+					const popupActive = document.querySelector('.popup.open');
+					if (popupActive) {
+						popupClose(popupActive, false);
+					}
+					popup.classList.add('open');
+					popup.addEventListener('click', function(e) {
+						if (!e.target.closest('.popup__content')) {
+							popupClose(e.target.closest('.popup'));
+						}
+					});
+				}
+			}
+			function popupClose(popupActive, doUnlock = true) {
+				if (unlock) {
+					popupActive.classList.remove('open');
+				}
+			}
+			
+
+
+
+
+
+
+		</script>
 	</body>
 </html>
